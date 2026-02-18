@@ -1,4 +1,6 @@
 ﻿
+using System.Xml;
+
 namespace Homework1
 {
     internal class tasks
@@ -16,6 +18,18 @@ namespace Homework1
             n = (a * 100) + c;
         }
 
+        static string ChessColor(int x, int y)
+        {
+            if (((x < 1) || (y < 1)) || ((x > 8) || (y > 8)))
+                throw new ArgumentException("координаты доски не в нужном диапазоне");
+            if ((x + y) % 2 == 0)
+                return "Поле черное";
+
+            return "Поле белое";
+        }
+
+
+
         static void Main()
         {
             Console.WriteLine("Введите трехзначное число: ");
@@ -23,6 +37,24 @@ namespace Homework1
 
             NullDec(ref n);
             Console.WriteLine($"Результат: {n}");
+
+            Console.WriteLine("Введите координату x: ");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Введите координату y: ");
+            int y = int.Parse(Console.ReadLine());
+
+            try
+            {
+                Console.WriteLine($"{ChessColor(x, y)}");
+            }
+
+            catch
+            {
+                Console.WriteLine("координаты доски не в нужном диапазоне");
+            }
         }
+
+
     }
 }
