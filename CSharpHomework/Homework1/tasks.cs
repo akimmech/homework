@@ -28,21 +28,42 @@ namespace Homework1
             return "Поле белое";
         }
 
+        static int CountRoots(int a, int b, int c)
+        {
+            if (a == 0)
+                throw new ArgumentException("А должно быть не равно 0");
+            var D = b * b - 4 * a * c;
+
+            if (D < 0)
+                throw new ArgumentException("корней нет");
+            if (D == 0) 
+                return 1;
+
+            return 2;
+
+
+
+
+
+
+        }
+
+
 
 
         static void Main()
         {
             Console.WriteLine("Введите трехзначное число: ");
-            int n = int.Parse(Console.ReadLine());
+            var n = int.Parse(Console.ReadLine());
 
             NullDec(ref n);
             Console.WriteLine($"Результат: {n}");
 
             Console.WriteLine("Введите координату x: ");
-            int x = int.Parse(Console.ReadLine());
+            var x = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите координату y: ");
-            int y = int.Parse(Console.ReadLine());
+            var y = int.Parse(Console.ReadLine());
 
             try
             {
@@ -53,6 +74,21 @@ namespace Homework1
             {
                 Console.WriteLine("координаты доски не в нужном диапазоне");
             }
+
+            Console.WriteLine("Введите a: ");
+            var a = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Введите b: ");
+            var b = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Введите c: ");
+            var c = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Уравнение: {a}x^2 + {b}x + {c} = 0");
+            Console.Write($"Количество корней: {CountRoots(a, b, c)}");
+
+
+
         }
 
 
